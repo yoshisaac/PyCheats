@@ -63,19 +63,21 @@ def set_bind(sender):
     dpg.set_item_indent("bhopKey", 0)
     dpg.set_item_label(sender, f'bind: {key}') # setting bind to button
 
+
 #Window & GUI creation
 dpg.create_context()
-with dpg.window(label=" ", width=300, height=300, no_move=True, no_collapse=True, no_resize=True):
+with dpg.window(tag="Window", label=" ", width=300, height=300, no_collapse=True, no_resize=True):
 
     dpg.add_checkbox(tag="bhopCheck", label="Toggle Bhop", default_value=True)
-    dpg.add_button(tag="bhopKey", label="Key: space", callback=set_bind) #Button that acts a key bind
-    dpg.add_spacer(height=150)
+    dpg.add_button(tag="bhopKey", label="bind: space", callback=set_bind) #Button that acts a key bind
+    dpg.add_spacer(height=165)
 
     dpg.add_button(tag="destButton", label="destroy gui")
 
 dpg.create_viewport(title="Bhop", width=300, max_width=300, min_width=300, height=300, max_height=300, min_height=300)
 dpg.setup_dearpygui()
 dpg.show_viewport()
+dpg.set_primary_window("Window", True)
 
 #Bhop function/thread
 def bhop():
